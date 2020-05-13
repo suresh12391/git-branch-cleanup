@@ -1,0 +1,25 @@
+
+git branch -vv | awk '/^ .*gone/{print $1}'
+
+git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -d
+
+git checkout master; 
+
+git pull origin master;
+
+git remote prune origin --dry-run;
+
+git remote prune origin;
+
+git fetch -p;
+
+git branch -vv | awk '/: gone]/{print $1}' 
+
+git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}'
+
+git branch | grep -v "master" | grep -v "develop"
+
+NOTE: Git merged cmds might delete local branches. Better to have control over us.
+
+
+
